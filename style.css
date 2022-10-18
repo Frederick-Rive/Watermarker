@@ -1,0 +1,114 @@
+/*colours:
+main: #5D7CEB
+light: #A1B0E2
+dark: #080E1F
+background: #F6F7FF
+
+*/
+
+*{
+  margin: 0px;
+  padding: 0px;
+  font-family: monospace;
+  background-color: #F6F7FF;
+  font-family: 'Roboto', sans-serif;
+}
+
+.header {
+  width: 100%;
+  height: 240px;
+  background-color: #5D7CEB;
+  color: #F6F7FF;
+  display: flex;
+}
+
+#logo {
+  margin: 40px 1%;
+  width: 200px;
+  height: 150px;
+  display: inline-block;
+  background-color: rgba(0,0,0,0);
+  cursor: pointer;
+}
+
+#title {
+  font-size: 120px;
+  text-align: center;
+  display: inline;
+  margin: auto;
+  background-color: rgba(0,0,0,0);
+  cursor: pointer;
+}
+
+#accountlabel{
+  font-size: 50px;
+  text-align: center;
+  display: block;
+  float: right;
+  margin-top: 85px;
+  margin-right: 50px;
+  background-color: rgba(0,0,0,0);
+  cursor: pointer;
+  cursor: pointer;
+}
+
+#imgdisplay {
+  width: 960px;
+  height: 540px;
+  border: 1px solid #5D7CEB;
+  display: block;
+  margin: auto;
+  cursor: pointer;
+  color:  #F6F7FF;
+}
+
+#imginput {
+  position: relative;
+  top: -540px;
+  left: 290px;
+  width: 950px;
+  height: 530px;
+  opacity: 0%;
+  cursor: pointer;
+}
+
+
+.page {
+  padding: 100px;
+  background-color: #F6F7FF;
+}
+
+.row {
+  width: 100%;
+  align-content: center;
+}
+
+.rowelement{
+  display: inline-block;
+  align-self: center;
+}
+
+.button {
+    background-color: #5D7CEB;
+    height: 60px;
+    width: 450px;
+    font-size: 30px;
+    color: #F6F7FF;
+    margin: auto;
+    text-align: center;
+    padding: 20px 0 0 0;
+    cursor: pointer;
+}
+
+.accountinput {
+  margin: auto;
+  border: 2px solid #5D7CEB;
+  width: 600px;
+  height: 50px;
+  display: block;
+  font-size: 30px;
+}
+
+.vspacer {
+  height: 100px;
+}

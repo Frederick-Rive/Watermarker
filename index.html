@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+  </head>
+
+  <body>
+    <div class="header">
+      <img id="logo" src="images/logo.png" onclick="toHome()">
+      <div id="title" onclick="toHome()">Watermarker</div>
+      <div id="accountlabel" onclick="toLogin()">Log In</div>
+    </div>
+    <script scr="main.js"></script>
+
+    <div id="home" class="page">
+      <div class="vspacer"></div>
+      <div class="button" onclick="toAdd()">Add Watermark</div>
+      <div class="vspacer"></div>
+      <div class="button" onclick="toView()">Check Watermark</div>
+    </div>
+
+    <div id="image">
+      <div class="vspacer" style="height: 50px;"></div>
+      <div style="height: 550px;">
+        <img id="imgdisplay" src="">
+        <input id="imginput" type="file" accept=".png">
+      </div>
+      <div class="vspacer" style="height: 25px;"></div>
+    </div>
+
+    <div id="add">
+      <div class="button" style="width: 250px; height: 40px; padding: 7px 0 0 0;">Add</div>
+    </div>
+
+    <div id="view">
+      <div class="button" style="width: 250px; height: 40px; padding: 7px 0 0 0;">Check</div>
+    </div>
+
+    <div id="login">
+      <div class="vspacer"></div>
+      <input id="uname" class="accountinput" placeholder="Username">
+      <div class="vspacer"></div>
+      <input id="pword" class="accountinput" placeholder="Password" type="password">
+      <div class="vspacer"></div>
+      <div class="button" style="width: 250px; height: 40px; padding: 7px 0 0 0;" onclick="logIn()">Log In</div>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>
