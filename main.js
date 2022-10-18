@@ -90,4 +90,12 @@ function logOut() {
   accountLabel.textContent = "Log In";
 }
 
+function addWatermark() {
+
+}
+
+function checkWatermark() {
+
+}
+
 init();
