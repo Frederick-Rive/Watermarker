@@ -112,3 +112,24 @@ background: #F6F7FF
 .vspacer {
   height: 100px;
 }
+
+.popup {
+  position: fixed;
+  display: inline-block;
+  cursor: pointer;
+  margin: auto;
+  display: none;
+  width: 320px;
+  padding: 20px 0;
+  background-color: #F6F7FF;
+  color: #5D7CEB;
+  text-align: center;
+  border: 2px solid #5D7CEB;
+  /*border-radius: 6px;*/
+  position: absolute;
+  z-index: 1;
+  bottom: 50%;
+  left: 50%;
+  margin-left: -160px;
+  box-shadow: #114 0px 5px 5px;
+}
