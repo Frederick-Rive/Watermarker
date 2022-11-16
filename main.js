@@ -5,6 +5,9 @@ var image;
 var username;
 var password;
 var accountLabel;
+var popUpDisplay;
+var popUpDownload;
+var download
 
 function init() {
   pages.home = document.getElementById("home");
@@ -15,8 +18,11 @@ function init() {
 
   imageDisplay = document.getElementById("imgdisplay");
   imageInput = document.getElementById("imginput");
-  accountLabel = document.getElementById("accountlabel")
+  accountLabel = document.getElementById("accountlabel");
 
+  popUpDisplay = document.getElementById("popupdisplay");
+  popUpDownload = document.getElementById("popupdownload");
+  download = document.getElementById("download");
   toHome();
 }
 
@@ -34,6 +40,9 @@ function toAdd() {
   pages.add.style.display = "block";
   pages.view.style.display = "none";
   pages.login.style.display = "none";
+
+  pages.add.style.zIndex = 10;
+  pages.view.style.zIndex = 1;
 }
 
 function toView() {
@@ -42,6 +51,9 @@ function toView() {
   pages.add.style.display = "none";
   pages.view.style.display = "block";
   pages.login.style.display = "none";
+
+  pages.add.style.zIndex = 1;
+  pages.view.style.zIndex = 10;
 }
 
 function toLogin() {
@@ -59,11 +71,25 @@ function toLogin() {
   }
 }
 
+function openPopUpDisplay(text) {
+  popUpDisplay.textContent = text;
+  popUpDisplay.style.display = "block";
+}
+
+function closePopUpDisplay() {
+  popUpDisplay.style.display = "none";
+}
+
+function closePopUpDownload() {
+  popUpDownload.style.display = "none";
+}
+
  document.getElementById("imginput").onchange = function () {
   let url = imageInput.value;
   let ext = url.substring(url.lastIndexOf('.') + 1).toLowerCase();
 
   if(imageInput.files && imageInput.files[0] && ext == "png") {
+    console.log(imageInput.files[0]);
     let reader = new FileReader();
     reader.onload = function() {
       image = reader.result;
@@ -80,7 +106,15 @@ function logIn() {
 
   accountLabel.textContent = username;
 
-  toHome();
+  let xhttp = new XMLHttpRequest();
+
+  xhttp.onload = function () {
+    console.log(this.responseText)
+    toHome();
+    openPopUpDisplay(`You have logged in as ${username}`);
+  }
+  xhttp.open("POST", "http://localhost:5000/account");
+  xhttp.send(username);
 }
 
 function logOut() {
@@ -91,11 +125,34 @@ function logOut() {
 }
 
 function addWatermark() {
+  let xhttp = new XMLHttpRequest();
 
+  xhttp.onload = function () {
+    if(this.responseText == "error") {
+      openPopUpDisplay("Error: This image format is unsupported");
+    } else {
+      console.log(this.responseText);
+      download.href = this.responseText;
+      popUpDownload.style.display = "block";
+  }
+  }
+  xhttp.open("POST", "http://localhost:5000/encode");
+  xhttp.send(image);
 }
 
 function checkWatermark() {
+  console.log('a');
+  let xhttp = new XMLHttpRequest();
 
+  xhttp.onload = function () {
+    if(this.responseText == "error") {
+      openPopUpDisplay("Error: This image format is unsupported");
+    } else {
+      openPopUpDisplay("This image is watermarked by " + this.responseText);
+    }
+  }
+  xhttp.open("POST", "http://localhost:5000/decode");
+  xhttp.send(image);
 }
 
 init();
