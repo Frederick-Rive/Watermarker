@@ -107,6 +107,8 @@ function logIn() {
   accountLabel.textContent = username;
 
   let xhttp = new XMLHttpRequest();
+  
+  let encodedUsername = btoa(username)
 
   xhttp.onload = function () {
     console.log(this.responseText)
@@ -114,7 +116,7 @@ function logIn() {
     openPopUpDisplay(`You have logged in as ${username}`);
   }
   xhttp.open("POST", "http://localhost:5000/account");
-  xhttp.send(username);
+  xhttp.send(encodedUsername);
 }
 
 function logOut() {
@@ -141,14 +143,14 @@ function addWatermark() {
 }
 
 function checkWatermark() {
-  console.log('a');
   let xhttp = new XMLHttpRequest();
 
   xhttp.onload = function () {
     if(this.responseText == "error") {
       openPopUpDisplay("Error: This image format is unsupported");
     } else {
-      openPopUpDisplay("This image is watermarked by " + this.responseText);
+      decodedUsername = atob(this.responseText);
+      openPopUpDisplay("This image is watermarked by " + decodedUsername);
     }
   }
   xhttp.open("POST", "http://localhost:5000/decode");
